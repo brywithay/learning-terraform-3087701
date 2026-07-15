@@ -2,8 +2,8 @@ data "aws_ami" "app_ami" {
   most_recent = true
 
   filter {
-    name   = "product-code"
-    values = ["987bswk7m5oqlg9x85e6p8mvl"]
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
 
   filter {
@@ -11,7 +11,7 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
 
-  owners = ["aws-marketplace"]
+  owners = ["amazon"]
 }
 
 data "aws_vpc" "default" {
@@ -50,6 +50,16 @@ resource "aws_security_group_rule" "blog_https_in" {
   type        = "ingress"
   from_port   = 443
   to_port     = 443
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+
+  security_group_id = aws_security_group.blog.id
+}
+
+resource "aws_security_group_rule" "blog_http_8080_in" {
+  type        = "ingress"
+  from_port   = 8080
+  to_port     = 8080
   protocol    = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
 
