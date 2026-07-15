@@ -2,8 +2,8 @@ data "aws_ami" "app_ami" {
   most_recent = true
 
   filter {
-    name   = "name"
-    values = ["aws-marketplace/bitnami-tomcat-*-linux-debian-*"]
+    name   = "product-code"
+    values = ["987bswk7m5oqlg9x85e6p8mvl"] # Unique product code for Bitnami Tomcat Stack
   }
 
   filter {
@@ -11,7 +11,7 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
 
-  owners = ["679593333241"] # Bitnami
+  owners      = ["aws-marketplace"] # Searches the whole marketplace catalog
 }
 
 resource "aws_instance" "web" {
