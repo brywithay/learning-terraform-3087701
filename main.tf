@@ -2,8 +2,8 @@ data "aws_ami" "app_ami" {
   most_recent = true
 
   filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+    name   = "product-code"
+    values = ["987bswk7m5oqlg9x85e6p8mvl"]
   }
 
   filter {
@@ -11,7 +11,7 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
 
-  owners = ["amazon"]
+  owners = ["aws-marketplace"]
 }
 
 data "aws_vpc" "default" {
