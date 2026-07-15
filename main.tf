@@ -3,7 +3,7 @@ data "aws_ami" "app_ami" {
 
   filter {
     name   = "name"
-    values = ["bitnami-tomcat-*-linux-debian-*"]
+    values = ["aws-marketplace/bitnami-tomcat-*-linux-debian-*"]
   }
 
   filter {
